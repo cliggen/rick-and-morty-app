@@ -1,0 +1,13 @@
+.Main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+.Main__background {
+        width: 100vw;
+        height: 85vh;
+        background:url(https://images6.alphacoders.com/625/thumb-1920-625916.jpg);
+        background-size: cover;
+
+}

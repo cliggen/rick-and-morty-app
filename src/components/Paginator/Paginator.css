@@ -1,0 +1,18 @@
+.pagination {
+    list-style: none;
+    display: flex;
+}
+.pagination li {
+    border: 1px solid grey;
+    background-color: #454034;
+    color: white;
+    padding: 0.7rem;
+    text-align: center;
+}
+.pagination li:hover {
+    cursor: pointer;
+    background-color: grey;
+}
+.pagination li.active {
+    color: grey;
+}

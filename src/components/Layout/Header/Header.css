@@ -1,0 +1,21 @@
+.Header {
+    text-align: center;
+}
+.Header__slogan {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+.Header__navigation {
+display: flex;
+justify-content: space-around;
+align-items: center;
+background-color: #454034;
+height: 2rem;
+}
+
+.nav-link {
+    padding: 0 2rem;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
