@@ -1,9 +1,9 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-let SearchForm = (props) => {
+const SearchFormUI = ({ handleSubmit }) => {
     return (
-        <form className="search" onSubmit={props.handleSubmit}>
+        <form className="search" onSubmit={handleSubmit}>
             <Field className="search__child" name="status" component="select">
                 <option>Status</option>
                 <option value="dead">Dead</option>
@@ -46,7 +46,6 @@ let SearchForm = (props) => {
         </form>
     );
 };
-
-export default SearchForm = reduxForm({
+export const SearchForm = reduxForm({
     form: 'SearchForm',
-})(SearchForm);
+})(SearchFormUI);

@@ -1,31 +1,30 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './SingleCard.css';
-const SingleCard = (props) => {
-    const { currentCard } = props;
+const SingleCard = ({ currentCard }) => {
     return (
-        <NavLink to="/character" className="SingleCard">
+        <NavLink to="/character" className="singleCard">
             <img src={currentCard.image} alt="avatar" />
-            <div className="SingleCard__info">
-                <div className="SingleCard___info__container">
+            <div className="singleCard__info">
+                <div className="singleCard___info__container">
                     Name:
-                    <div className="SingleCard__info__name">{currentCard.name}</div>
+                    <div className="singleCard__info__name">{currentCard.name}</div>
                 </div>
-                <div className="SingleCard___info__container">
+                <div className="singleCard___info__container">
                     Status:
-                    <div className="SingleCard__info__name">
+                    <div className="singleCard__info__name">
                         {currentCard.status}
                     </div>
                 </div>
-                <div className="SingleCard___info__container">
+                <div className="singleCard___info__container">
                     Species:
-                    <div className="SingleCard__info__name">
+                    <div className="singleCard__info__name">
                         {currentCard.species}
                     </div>
                 </div>
-                <div className="SingleCard___info__container">
+                <div className="singleCard___info__container">
                     Gender:
-                    <div className="SingleCard__info__name">
+                    <div className="singleCard__info__name">
                         {currentCard.gender}
                     </div>
                 </div>

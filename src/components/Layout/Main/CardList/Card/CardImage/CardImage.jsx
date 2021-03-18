@@ -5,7 +5,7 @@ const CardImage = (props) => {
     const { image } = props;
     return (
         <div className="CardImage">
-            {image ? <img src={image} alt="card-preview" /> : null}
+            {image && <img src={image} alt="card-preview" />}
         </div>
     );
 };

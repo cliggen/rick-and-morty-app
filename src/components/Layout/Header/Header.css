@@ -1,11 +1,11 @@
-.Header {
+.header {
     text-align: center;
 }
-.Header__slogan {
+.header__slogan {
     font-size: 3rem;
     margin-bottom: 1rem;
 }
-.Header__navigation {
+.header__navigation {
 display: flex;
 justify-content: space-around;
 align-items: center;

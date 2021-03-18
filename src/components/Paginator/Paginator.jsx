@@ -2,12 +2,16 @@ import React from 'react';
 import ReactPaginate from 'react-paginate';
 import './Paginator.css';
 import { switchPage, loadPage } from '../../redux/cardsSlice';
-import { get } from '../../api/utils';
+import { fetchData } from '../../api/utils';
 import { useSelector, useDispatch } from 'react-redux';
+import { PAGEURL } from '../../api/urls';
 
 const Paginator = () => {
     const dispatch = useDispatch();
     const { pagesCount } = useSelector((state) => state.cards);
+    const dispatchLoadPage = (item) => {
+        dispatch(loadPage(item));
+    };
     return (
         <ReactPaginate
             previousLabel={'<'}
@@ -19,13 +23,7 @@ const Paginator = () => {
             pageRangeDisplayed={1}
             onPageChange={(e) => {
                 dispatch(switchPage(e.selected + 1));
-                get(
-                    `https://rickandmortyapi.com/api/character/?page=${
-                        e.selected + 1
-                    }`
-                ).then((x) => {
-                    dispatch(loadPage(x.data));
-                });
+                fetchData(`${PAGEURL}${e.selected + 1}`, dispatchLoadPage);
             }}
             containerClassName={'pagination'}
             subContainerClassName={'pages pagination'}

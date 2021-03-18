@@ -2,16 +2,17 @@ import React, { useEffect } from 'react';
 import Layout from '../components/Layout/Layout';
 import { loadCards } from '../redux/cardsSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { get } from '../api/utils';
+import { fetchData } from '../api/utils';
+import { PAGEURL } from '../api/urls';
 const App = () => {
     const dispatch = useDispatch();
     const currentPage = useSelector((state) => state.cards.currentPage);
+
     useEffect(() => {
-        get(`https://rickandmortyapi.com/api/character/?page=${currentPage}`).then(
-            (x) => {
-                dispatch(loadCards(x.data));
-            }
-        );
+        const dispatchLoadCards = (item) => {
+            dispatch(loadCards(item));
+        };
+        fetchData(`${PAGEURL}${currentPage}`, dispatchLoadCards);
     }, [currentPage, dispatch]);
 
     return (

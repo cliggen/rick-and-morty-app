@@ -4,25 +4,21 @@ import CardHeader from './CardHeader/CardHeader';
 import CardImage from './CardImage/CardImage';
 import withPreloader from '../../../../../hoc/withPreloader';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { getSingleCard } from '../../../../../redux/cardsSlice';
+import { CHARACTERURL } from '../../../../../api/urls';
+import { fetchData } from '../../../../../api/utils';
 
-const Card = (props) => {
+const Card = ({ cardData: { name, image, id } }) => {
     const dispatch = useDispatch();
-    const { name, image, id } = props.cardData;
+    const dispatchSingleCard = (item) => {
+        dispatch(getSingleCard(item));
+    };
+    const getCharacter = () => {
+        fetchData(`${CHARACTERURL}${id}`, dispatchSingleCard);
+    };
     return (
-        <NavLink
-            to={`/character/${id}`}
-            className="Card"
-            onClick={() => {
-                axios
-                    .get(`https://rickandmortyapi.com/api/character/${id}`)
-                    .then((x) => {
-                        dispatch(getSingleCard(x.data));
-                    });
-            }}
-        >
+        <NavLink to={`/character/${id}`} className="card" onClick={getCharacter}>
             <CardHeader title={name} />
             <CardImage image={image} />
         </NavLink>
