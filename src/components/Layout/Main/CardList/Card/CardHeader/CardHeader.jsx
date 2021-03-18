@@ -1,7 +1,7 @@
 import React from 'react';
 import './CardHeader.css';
 
-const CardHeader = ({title}) => {
+const CardHeader = ({ title }) => {
     return <div className="cardHeader">{title}</div>;
 };
 
