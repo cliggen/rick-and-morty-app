@@ -4,16 +4,14 @@ import Main from './Main/Main';
 import Footer from './Footer/Footer';
 import './Layout.css';
 
-class Layout extends React.Component {
-    render() {
-        return (
-            <div className="Layout">
-                <Header />
-                <Main />
-                <Footer />
-            </div>
-        );
-    }
-}
+const Layout = () => {
+    return (
+        <div className="Layout">
+            <Header />
+            <Main />
+            <Footer />
+        </div>
+    );
+};
 
 export default Layout;
