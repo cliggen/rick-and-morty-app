@@ -13,7 +13,7 @@ const App = () => {
             dispatch(loadCards(item));
         };
         fetchData(`${PAGEURL}${currentPage}`, dispatchLoadCards);
-    }, [currentPage, dispatch]);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div className="App">
