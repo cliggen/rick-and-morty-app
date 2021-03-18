@@ -1,43 +1,43 @@
 import React from 'react';
 import './Header.css';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { filterCards } from '../../../redux/cardsSlice';
-import FilterForm from '../../Form/FilterForm';
-import { get } from '../../../api/utils';
+import { SearchForm } from '../../Form/FilterForm';
+import { fetchFilteredCards } from '../../../api/utils';
+import { useDispatch } from 'react-redux';
+import { APIURL } from '../../../api/urls';
 
-class Header extends React.Component {
-    submit = (values) => {
+const Header = () => {
+    const dispatch = useDispatch();
+    const handle = (item) => {
+        dispatch(filterCards(item));
+    };
+    const submit = (values) => {
         const queryParams = Object.keys(values).reduce(
             (accumulator, key) => accumulator + `${key}=${values[key]}&`,
             'character/?'
         );
-        get(`https://rickandmortyapi.com/api/${queryParams}`).then((x) => {
-            this.props.filterCards(x.data.results);
-        });
+
+        fetchFilteredCards(`${APIURL}${queryParams}`, handle);
     };
-    render() {
-        return (
-            <div className="Header">
-                <div className="Header__slogan"> Rick & Morty Application</div>
-                <nav className="Header__navigation">
-                    <NavLink className="nav-link" activeClassName="selected" to="/">
-                        Main Page
-                    </NavLink>
-                    <NavLink
-                        className="nav-link"
-                        activeClassName="selected"
-                        to="/character"
-                    >
-                        Characters
-                    </NavLink>
-                    <FilterForm onSubmit={this.submit} />
-                </nav>
-            </div>
-        );
-    }
-}
+    return (
+        <div className="header">
+            <div className="header__slogan"> Rick & Morty Application</div>
+            <nav className="header__navigation">
+                <NavLink className="nav-link" activeClassName="selected" to="/">
+                    Main Page
+                </NavLink>
+                <NavLink
+                    className="nav-link"
+                    activeClassName="selected"
+                    to="/character"
+                >
+                    Characters
+                </NavLink>
+                <SearchForm onSubmit={submit} />
+            </nav>
+        </div>
+    );
+};
 
-const mapDispatchToProps = { filterCards };
-
-export default connect(null, mapDispatchToProps)(Header);
+export default Header;

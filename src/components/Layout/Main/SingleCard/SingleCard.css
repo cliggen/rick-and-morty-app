@@ -1,4 +1,4 @@
-.SingleCard {
+.singleCard {
     box-shadow: 5px 5px 25px lightblue;
     border-radius: 0.5rem;
     padding: 1rem;
@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
 }
-.SingleCard__info {
+.singleCard__info {
     border-radius: 5px;
     background-color: #454034;
     height: 17.7rem;
@@ -16,16 +16,16 @@
     margin-left: 1rem;
     min-width: 20rem;
 }
-.SingleCard img {
+.singleCard img {
     border-radius: 5px;
 }
 
-.SingleCard___info__container {
+.singleCard___info__container {
   
     color: white;
     padding: 5px;
 
 }
-.SingleCard__info__name {
+.singleCard__info__name {
     font-size: 1.5rem;
 }
