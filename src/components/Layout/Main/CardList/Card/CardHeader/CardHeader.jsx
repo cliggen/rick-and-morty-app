@@ -1,8 +1,8 @@
 import React from 'react';
 import './CardHeader.css';
 
-const CardHeader = (props) => {
-    return <div className="CardHeader">{props.title}</div>;
+const CardHeader = ({title}) => {
+    return <div className="cardHeader">{title}</div>;
 };
 
 export default CardHeader;
